@@ -10,16 +10,16 @@ namespace FinalPro1.Controllers
     public class UsuarioController : ControllerBase
     {
         [HttpGet(Name = "MostrarUsuarios")]
-        public List<Usuario> GetUsuarios()
+        public List<Usuario> GetUsuarios(string NombreUsuario)
         {
 
-            return UsuarioHandler.GetUsuarios();
+            return UsuarioHandler.GetUsuarios(NombreUsuario);
 
         }
 
         [HttpDelete(Name = "BorrarUsuario")]
 
-        public void DeleteUsuario([FromBody] int Id)
+        public bool DeleteUsuario([FromBody] int Id)
         {
             return UsuarioHandler.DeleteUsuario(Id);
 
@@ -29,19 +29,18 @@ namespace FinalPro1.Controllers
         public void ModificarUsuario([FromBody] PutUsuario usuario)
         {
 
-            return UsuarioHandler.ModificarUsuario(usuario);
+            return UsuarioHandler.ModificarUsuario(new Usuario);
 
         }
 
         [HttpPost(Name = "CrearUsuario")]
 
-        public void CrearUsuario([FromBody] PostUsuario usuario)
+        public string CrearUsuario([FromBody] PostUsuario usuario)
         {
-            try
-            {
+              
 
 
-                return UsuarioHandler.CrearUsuario(new usuario
+                return UsuarioHandler.CrearUsuario(new Usuario
                 {
                     Apellido = usuario.Apellido,
                     Contraseña = usuario.Contraseña,
@@ -51,14 +50,7 @@ namespace FinalPro1.Controllers
 
                 });
 
-            }
-            catch (Exception ex)
-            { 
-
-                Console.WriteLine(ex.Message);
-                return false;
-            }                              
-
+           
 
         }
     }

@@ -20,14 +20,14 @@ namespace FinalPro1.Controllers
 
         [HttpDelete(Name = "BorrarProducto")]
 
-        public void DeleteProducto([FromBody] int Id)
+        public string DeleteProducto([FromBody] int Id)
         {
             return ProductoHandler.DeleteProducto(Id);
 
         }
 
         [HttpPut(Name = "ModificarProducto")]
-        public void ModificarProducto([FromBody]PutProducto producto)
+        public string ModificarProducto([FromBody]PutProducto producto)
         {
 
             return ProductoHandler.ModificarProducto(producto);
@@ -36,7 +36,7 @@ namespace FinalPro1.Controllers
 
         [HttpPost(Name = "CrearProducto")]
 
-        public void CrearProducto([FromBody] PostProducto producto)
+        public string CrearProducto([FromBody] PostProducto producto)
         {
 
 

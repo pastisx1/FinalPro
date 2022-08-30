@@ -61,7 +61,7 @@ namespace FinalPro1.Repository
         }
 
         //Borrar Usuario
-        public bool DeleteUsuario(int Id)
+        public static bool DeleteUsuario(int Id)
         {
             bool resultado = false;
             using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
@@ -123,11 +123,11 @@ namespace FinalPro1.Repository
                 }
                 if (_update == 1)
                 {
-                    _posicion = "Se actualizó el Id del usuario a : " + usuario.Id;
+                    _posicion = "Se actualizó el Id del _usuario a : " + usuario.Id;
                 }
                 else
                 {
-                    _posicion = "Ups! Apareció un conflicto y no pudo cambiar el Id de usuario a : " + usuario.Id;
+                    _posicion = "Ups! Apareció un conflicto y no pudo cambiar el Id de _usuario a : " + usuario.Id;
                 }
                 sqlConnection.Close();
 
@@ -142,7 +142,7 @@ namespace FinalPro1.Repository
 
         //Crear Usuarios
 
-        public string CrearUsuario(Usuario usuario)
+        public static string CrearUsuario(Usuario _usuario)
         {
 
             string _posicion = String.Empty;
@@ -154,11 +154,11 @@ namespace FinalPro1.Repository
                     "( @Nombre, @Apellido, @NombreUsuario, @Contraseña, @Mail )";
 
                 //Parámetros
-                SqlParameter _Nombre = new SqlParameter("Nombre", SqlDbType.VarChar) { Value = usuario.Nombre };
-                SqlParameter _Apellido = new SqlParameter("Apellido", SqlDbType.VarChar) { Value = usuario.Apellido };
-                SqlParameter _NombreUsuario = new SqlParameter("NombreUsuario", SqlDbType.VarChar) { Value = usuario.NombreUsuario };
-                SqlParameter _Contraseña = new SqlParameter("Contraseña", SqlDbType.VarChar) { Value = usuario.Contraseña };
-                SqlParameter _Mail = new SqlParameter("Mail", SqlDbType.VarChar) { Value = usuario.Mail };
+                SqlParameter _Nombre = new SqlParameter("Nombre", SqlDbType.VarChar) { Value = _usuario.Nombre };
+                SqlParameter _Apellido = new SqlParameter("Apellido", SqlDbType.VarChar) { Value = _usuario.Apellido };
+                SqlParameter _NombreUsuario = new SqlParameter("NombreUsuario", SqlDbType.VarChar) { Value = _usuario.NombreUsuario };
+                SqlParameter _Contraseña = new SqlParameter("Contraseña", SqlDbType.VarChar) { Value = _usuario.Contraseña };
+                SqlParameter _Mail = new SqlParameter("Mail", SqlDbType.VarChar) { Value = _usuario.Mail };
 
                 sqlConnection.Open();
                 using (SqlCommand sqlCommand = new SqlCommand(QueryUpdate, sqlConnection))
@@ -172,11 +172,11 @@ namespace FinalPro1.Repository
                 }
                 if (_creados == 1)
                 {
-                    _posicion = "El usuario: '" + usuario.NombreUsuario + "' creado con exito.";
+                    _posicion = "El _usuario: '" + _usuario.NombreUsuario + "' creado con exito.";
                 }
                 else
                 {
-                    _posicion = "Error - El usuario '" + usuario.NombreUsuario + "' no se creo.";
+                    _posicion = "Error - El _usuario '" + _usuario.NombreUsuario + "' no se creo.";
                 }
                 sqlConnection.Close();
             }

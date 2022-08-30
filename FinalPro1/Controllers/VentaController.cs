@@ -25,9 +25,9 @@ namespace FinalPro1.Controllers
             }
 
             [HttpDelete(Name = "BorraVenta")]
-            public string DeleteVenta([FromHeader] int venta)
+            public string DeleteVenta([FromHeader] int Idventa)
             {
-                return VentaHandler.DeleteVenta(venta);
+                return VentaHandler.DeleteVenta(Idventa);
             }
 
     }

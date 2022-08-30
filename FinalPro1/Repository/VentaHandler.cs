@@ -54,7 +54,7 @@ namespace FinalPro1.Repository
         }
 
         //borrar ventas
-            public string DeleteVenta(int IdVenta)
+            public static string DeleteVenta(int IdVenta)
         {
             string result = String.Empty;
             int BorraVenta;

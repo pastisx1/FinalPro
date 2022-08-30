@@ -111,7 +111,7 @@ namespace FinalPro1.Repository
         }
 
         //Eliminar Producto
-        public string DeleteProducto(int IdProducto)
+        public string DeleteProducto(int Id)
         {
 
             string Result = String.Empty;
@@ -119,7 +119,7 @@ namespace FinalPro1.Repository
 
             using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
-                SqlParameter IdProducto = new SqlParameter("IdProducto", System.Data.SqlDbType.BigInt) { Value = IdProducto };
+                SqlParameter IdProducto = new SqlParameter("IdProducto", System.Data.SqlDbType.BigInt) { Value = Id };
 
 
                 string QueryDelpvendido = "DELETE FROM ProductoVendido WHERE IdProducto = @IdProducto";
@@ -160,7 +160,7 @@ namespace FinalPro1.Repository
 
         //Crear Producto
 
-        public string CrearProducto(PostProducto Producto)
+        public static string CrearProducto(PostProducto Producto)
         {
             string result = string.Empty;
             int pcreados = 0;
